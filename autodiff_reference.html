@@ -1,0 +1,1674 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>API Reference - Autodiff Engine &mdash; Autodiff Engine &amp; Models 0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=2709fde1"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="API Reference - Autodiff Models" href="models_reference.html" />
+    <link rel="prev" title="Autodiff Engine &amp; Models documentation" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Autodiff Engine & Models
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">API Reference - Autodiff Engine</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#autodiff-variable">Autodiff - Variable</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#autodiff.variable.Variable"><code class="docutils literal notranslate"><span class="pre">Variable</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#autodiff.variable.Variable.data"><code class="docutils literal notranslate"><span class="pre">Variable.data</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#autodiff.variable.Variable.gradient"><code class="docutils literal notranslate"><span class="pre">Variable.gradient</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#autodiff.variable.Variable.constant"><code class="docutils literal notranslate"><span class="pre">Variable.constant</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#autodiff.variable.Variable.delete_gradient"><code class="docutils literal notranslate"><span class="pre">Variable.delete_gradient()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#autodiff.variable.Variable.backward"><code class="docutils literal notranslate"><span class="pre">Variable.backward()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id0"><code class="docutils literal notranslate"><span class="pre">Variable.constant</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#autodiff.variable.Variable.cos"><code class="docutils literal notranslate"><span class="pre">Variable.cos()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id1"><code class="docutils literal notranslate"><span class="pre">Variable.data</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id2"><code class="docutils literal notranslate"><span class="pre">Variable.delete_gradient()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#autodiff.variable.Variable.exp"><code class="docutils literal notranslate"><span class="pre">Variable.exp()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id3"><code class="docutils literal notranslate"><span class="pre">Variable.gradient</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#autodiff.variable.Variable.ln"><code class="docutils literal notranslate"><span class="pre">Variable.ln()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#autodiff.variable.Variable.max"><code class="docutils literal notranslate"><span class="pre">Variable.max()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#autodiff.variable.Variable.mean"><code class="docutils literal notranslate"><span class="pre">Variable.mean()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#autodiff.variable.Variable.min"><code class="docutils literal notranslate"><span class="pre">Variable.min()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#autodiff.variable.Variable.sigmoid"><code class="docutils literal notranslate"><span class="pre">Variable.sigmoid()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#autodiff.variable.Variable.sin"><code class="docutils literal notranslate"><span class="pre">Variable.sin()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#autodiff.variable.Variable.std"><code class="docutils literal notranslate"><span class="pre">Variable.std()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#autodiff.variable.Variable.sum"><code class="docutils literal notranslate"><span class="pre">Variable.sum()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#autodiff.variable.Variable.transpose"><code class="docutils literal notranslate"><span class="pre">Variable.transpose()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#autodiff-operations">Autodiff - Operations</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#autodiff.operation.AbsoluteValue"><code class="docutils literal notranslate"><span class="pre">AbsoluteValue</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#autodiff.operation.AbsoluteValue.backward"><code class="docutils literal notranslate"><span class="pre">AbsoluteValue.backward()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#autodiff.operation.Add"><code class="docutils literal notranslate"><span class="pre">Add</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#autodiff.operation.Add._inputs"><code class="docutils literal notranslate"><span class="pre">Add._inputs</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#autodiff.operation.Add._forward"><code class="docutils literal notranslate"><span class="pre">Add._forward()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#autodiff.operation.Add._backward"><code class="docutils literal notranslate"><span class="pre">Add._backward()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#autodiff.operation.Add.__str__"><code class="docutils literal notranslate"><span class="pre">Add.__str__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#autodiff.operation.Add.backward"><code class="docutils literal notranslate"><span class="pre">Add.backward()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#autodiff.operation.Cosine"><code class="docutils literal notranslate"><span class="pre">Cosine</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#autodiff.operation.Cosine.backward"><code class="docutils literal notranslate"><span class="pre">Cosine.backward()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#autodiff.operation.Divide"><code class="docutils literal notranslate"><span class="pre">Divide</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#autodiff.operation.Divide.backward"><code class="docutils literal notranslate"><span class="pre">Divide.backward()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#autodiff.operation.Exp"><code class="docutils literal notranslate"><span class="pre">Exp</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#autodiff.operation.Exp.backward"><code class="docutils literal notranslate"><span class="pre">Exp.backward()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#autodiff.operation.Log"><code class="docutils literal notranslate"><span class="pre">Log</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#autodiff.operation.Log.backward"><code class="docutils literal notranslate"><span class="pre">Log.backward()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#autodiff.operation.MatrixMultiply"><code class="docutils literal notranslate"><span class="pre">MatrixMultiply</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#autodiff.operation.MatrixMultiply.backward"><code class="docutils literal notranslate"><span class="pre">MatrixMultiply.backward()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#autodiff.operation.Max"><code class="docutils literal notranslate"><span class="pre">Max</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#autodiff.operation.Max.backward"><code class="docutils literal notranslate"><span class="pre">Max.backward()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#autodiff.operation.Mean"><code class="docutils literal notranslate"><span class="pre">Mean</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#autodiff.operation.Mean.backward"><code class="docutils literal notranslate"><span class="pre">Mean.backward()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#autodiff.operation.Min"><code class="docutils literal notranslate"><span class="pre">Min</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#autodiff.operation.Min.backward"><code class="docutils literal notranslate"><span class="pre">Min.backward()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#autodiff.operation.Multiply"><code class="docutils literal notranslate"><span class="pre">Multiply</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#autodiff.operation.Multiply._inputs"><code class="docutils literal notranslate"><span class="pre">Multiply._inputs</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#autodiff.operation.Multiply._forward"><code class="docutils literal notranslate"><span class="pre">Multiply._forward()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#autodiff.operation.Multiply._backward"><code class="docutils literal notranslate"><span class="pre">Multiply._backward()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#autodiff.operation.Multiply.__str__"><code class="docutils literal notranslate"><span class="pre">Multiply.__str__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#autodiff.operation.Multiply.backward"><code class="docutils literal notranslate"><span class="pre">Multiply.backward()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#autodiff.operation.Negate"><code class="docutils literal notranslate"><span class="pre">Negate</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#autodiff.operation.Negate.backward"><code class="docutils literal notranslate"><span class="pre">Negate.backward()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#autodiff.operation.Operation"><code class="docutils literal notranslate"><span class="pre">Operation</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#autodiff.operation.Operation._inputs"><code class="docutils literal notranslate"><span class="pre">Operation._inputs</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#autodiff.operation.Operation.__call__"><code class="docutils literal notranslate"><span class="pre">Operation.__call__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#autodiff.operation.Operation._delete_gradient"><code class="docutils literal notranslate"><span class="pre">Operation._delete_gradient()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#autodiff.operation.Operation._forward"><code class="docutils literal notranslate"><span class="pre">Operation._forward()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#autodiff.operation.Operation._backward"><code class="docutils literal notranslate"><span class="pre">Operation._backward()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#autodiff.operation.Operation.backward"><code class="docutils literal notranslate"><span class="pre">Operation.backward()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#autodiff.operation.Operation.delete_gradient"><code class="docutils literal notranslate"><span class="pre">Operation.delete_gradient()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#autodiff.operation.Power"><code class="docutils literal notranslate"><span class="pre">Power</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#autodiff.operation.Power.backward"><code class="docutils literal notranslate"><span class="pre">Power.backward()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#autodiff.operation.Sigmoid"><code class="docutils literal notranslate"><span class="pre">Sigmoid</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#autodiff.operation.Sigmoid.backward"><code class="docutils literal notranslate"><span class="pre">Sigmoid.backward()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#autodiff.operation.Sine"><code class="docutils literal notranslate"><span class="pre">Sine</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#autodiff.operation.Sine._inputs"><code class="docutils literal notranslate"><span class="pre">Sine._inputs</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#autodiff.operation.Sine._forward"><code class="docutils literal notranslate"><span class="pre">Sine._forward()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#autodiff.operation.Sine._backward"><code class="docutils literal notranslate"><span class="pre">Sine._backward()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#autodiff.operation.Sine.__str__"><code class="docutils literal notranslate"><span class="pre">Sine.__str__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#autodiff.operation.Sine.backward"><code class="docutils literal notranslate"><span class="pre">Sine.backward()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#autodiff.operation.Std"><code class="docutils literal notranslate"><span class="pre">Std</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#autodiff.operation.Std.backward"><code class="docutils literal notranslate"><span class="pre">Std.backward()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#autodiff.operation.Subtract"><code class="docutils literal notranslate"><span class="pre">Subtract</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#autodiff.operation.Subtract.backward"><code class="docutils literal notranslate"><span class="pre">Subtract.backward()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#autodiff.operation.Sum"><code class="docutils literal notranslate"><span class="pre">Sum</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#autodiff.operation.Sum._inputs"><code class="docutils literal notranslate"><span class="pre">Sum._inputs</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#autodiff.operation.Sum._forward"><code class="docutils literal notranslate"><span class="pre">Sum._forward()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#autodiff.operation.Sum._backward"><code class="docutils literal notranslate"><span class="pre">Sum._backward()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#autodiff.operation.Sum.__str__"><code class="docutils literal notranslate"><span class="pre">Sum.__str__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#autodiff.operation.Sum.backward"><code class="docutils literal notranslate"><span class="pre">Sum.backward()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#autodiff.operation.Transpose"><code class="docutils literal notranslate"><span class="pre">Transpose</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#autodiff.operation.Transpose.backward"><code class="docutils literal notranslate"><span class="pre">Transpose.backward()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#autodiff-helper">Autodiff - Helper</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#autodiff.helper.InvalidDataError"><code class="docutils literal notranslate"><span class="pre">InvalidDataError</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#autodiff.helper.InvalidDataError.None"><code class="docutils literal notranslate"><span class="pre">InvalidDataError.None</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#autodiff.helper.InvalidDataError.__str__"><code class="docutils literal notranslate"><span class="pre">InvalidDataError.__str__()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#autodiff.helper.InvalidDifferentiationError"><code class="docutils literal notranslate"><span class="pre">InvalidDifferentiationError</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#autodiff.helper.InvalidDifferentiationError.message"><code class="docutils literal notranslate"><span class="pre">InvalidDifferentiationError.message</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#autodiff.helper.InvalidDifferentiationError.__str__"><code class="docutils literal notranslate"><span class="pre">InvalidDifferentiationError.__str__()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#autodiff.helper.InvalidGradientError"><code class="docutils literal notranslate"><span class="pre">InvalidGradientError</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#autodiff.helper.InvalidGradientError.None"><code class="docutils literal notranslate"><span class="pre">InvalidGradientError.None</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#autodiff.helper.InvalidGradientError.__str__"><code class="docutils literal notranslate"><span class="pre">InvalidGradientError.__str__()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#autodiff.helper.InvalidGradientShapeError"><code class="docutils literal notranslate"><span class="pre">InvalidGradientShapeError</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#autodiff.helper.InvalidGradientShapeError.data_shape"><code class="docutils literal notranslate"><span class="pre">InvalidGradientShapeError.data_shape</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#autodiff.helper.InvalidGradientShapeError.gradient_shape"><code class="docutils literal notranslate"><span class="pre">InvalidGradientShapeError.gradient_shape</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#autodiff.helper.InvalidGradientShapeError.__str__"><code class="docutils literal notranslate"><span class="pre">InvalidGradientShapeError.__str__()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#autodiff.helper.InvalidOperationError"><code class="docutils literal notranslate"><span class="pre">InvalidOperationError</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#autodiff.helper.InvalidOperationError.message"><code class="docutils literal notranslate"><span class="pre">InvalidOperationError.message</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#autodiff.helper.InvalidOperationError.__str__"><code class="docutils literal notranslate"><span class="pre">InvalidOperationError.__str__()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#autodiff.helper.JacobianError"><code class="docutils literal notranslate"><span class="pre">JacobianError</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#autodiff.helper.JacobianError.variable"><code class="docutils literal notranslate"><span class="pre">JacobianError.variable</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#autodiff.helper.JacobianError.__str__"><code class="docutils literal notranslate"><span class="pre">JacobianError.__str__()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="models_reference.html">API Reference - Autodiff Models</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Autodiff Engine & Models</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">API Reference - Autodiff Engine</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/autodiff_reference.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="api-reference-autodiff-engine">
+<h1>API Reference - Autodiff Engine<a class="headerlink" href="#api-reference-autodiff-engine" title="Link to this heading"></a></h1>
+<p>Find the documentation for the Autodiff Engine here!</p>
+<section id="autodiff-variable">
+<h2>Autodiff - Variable<a class="headerlink" href="#autodiff-variable" title="Link to this heading"></a></h2>
+<p>Find the documentation for the Variable here!</p>
+<dl class="py class" id="module-autodiff.variable">
+<dt class="sig sig-object py" id="autodiff.variable.Variable">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">autodiff.variable.</span></span><span class="sig-name descname"><span class="pre">Variable</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">operation</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#autodiff.operation.Operation" title="autodiff.operation.Operation"><span class="pre">Operation</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="#autodiff.helper.InvalidDataError.None" title="autodiff.helper.InvalidDataError.None"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">constant</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#autodiff.variable.Variable" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Class for representing a variable in the computation graph.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="autodiff.variable.Variable.data">
+<span class="sig-name descname"><span class="pre">data</span></span><a class="headerlink" href="#autodiff.variable.Variable.data" title="Link to this definition"></a></dt>
+<dd><p>The data of the variable.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>np.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="autodiff.variable.Variable.gradient">
+<span class="sig-name descname"><span class="pre">gradient</span></span><a class="headerlink" href="#autodiff.variable.Variable.gradient" title="Link to this definition"></a></dt>
+<dd><p>The gradient of the variable.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>np.ndarray | None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="autodiff.variable.Variable.constant">
+<span class="sig-name descname"><span class="pre">constant</span></span><a class="headerlink" href="#autodiff.variable.Variable.constant" title="Link to this definition"></a></dt>
+<dd><p>Whether the variable is a constant.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">backward(incoming_gradient</span></span></dt>
+<dd><p>np.ndarray | None = None):
+Computes the backward pass of the variable.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="autodiff.variable.Variable.delete_gradient">
+<span class="sig-name descname"><span class="pre">delete_gradient</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#autodiff.variable.Variable.delete_gradient" title="Link to this definition"></a></dt>
+<dd><p>Deletes the gradient of the variable.</p>
+</dd></dl>
+
+<dl class="simple">
+<dt>Properties:</dt><dd><p>data: Returns the data of the variable.
+gradient: Returns the gradient of the variable.
+constant: Returns whether the variable is a constant.</p>
+</dd>
+<dt>Setters:</dt><dd><p>data: Sets the data of the variable.
+gradient: Sets the gradient of the variable.
+constant: Sets whether the variable is a constant.</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="autodiff.variable.Variable.backward">
+<span class="sig-name descname"><span class="pre">backward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">incoming_gradient</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="#autodiff.helper.InvalidDataError.None" title="autodiff.helper.InvalidDataError.None"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#autodiff.helper.InvalidDataError.None" title="autodiff.helper.InvalidDataError.None"><span class="pre">None</span></a></span></span><a class="headerlink" href="#autodiff.variable.Variable.backward" title="Link to this definition"></a></dt>
+<dd><p>Computes the backward pass of the variable.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>incoming_gradient</strong> (<em>np.ndarray</em><em> | </em><em>None</em><em>, </em><em>optional</em>) – The incoming gradient.
+Defaults to None.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="id0">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">constant</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#id0" title="Link to this definition"></a></dt>
+<dd><p>Returns whether the variable is a constant.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>True if the variable is a constant, False otherwise.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="autodiff.variable.Variable.cos">
+<span class="sig-name descname"><span class="pre">cos</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#autodiff.variable.Variable" title="autodiff.variable.Variable"><span class="pre">Variable</span></a></span></span><a class="headerlink" href="#autodiff.variable.Variable.cos" title="Link to this definition"></a></dt>
+<dd><p>Returns the cosine of the variable.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The cosine of the variable.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="#autodiff.variable.Variable" title="autodiff.variable.Variable">Variable</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="id1">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">data</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ndarray</span></em><a class="headerlink" href="#id1" title="Link to this definition"></a></dt>
+<dd><p>Returns the data of the variable.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The data of the variable.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>np.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="id2">
+<span class="sig-name descname"><span class="pre">delete_gradient</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#autodiff.helper.InvalidDataError.None" title="autodiff.helper.InvalidDataError.None"><span class="pre">None</span></a></span></span><a class="headerlink" href="#id2" title="Link to this definition"></a></dt>
+<dd><p>Deletes the gradient of the variable.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="autodiff.variable.Variable.exp">
+<span class="sig-name descname"><span class="pre">exp</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#autodiff.variable.Variable" title="autodiff.variable.Variable"><span class="pre">Variable</span></a></span></span><a class="headerlink" href="#autodiff.variable.Variable.exp" title="Link to this definition"></a></dt>
+<dd><p>Returns the exponential of the variable.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The exponential of the variable.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="#autodiff.variable.Variable" title="autodiff.variable.Variable">Variable</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="id3">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">gradient</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ndarray</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="#autodiff.helper.InvalidDataError.None" title="autodiff.helper.InvalidDataError.None"><span class="pre">None</span></a></em><a class="headerlink" href="#id3" title="Link to this definition"></a></dt>
+<dd><p>Returns the gradient of the variable.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The gradient of the variable.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>np.ndarray | None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="autodiff.variable.Variable.ln">
+<span class="sig-name descname"><span class="pre">ln</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#autodiff.variable.Variable" title="autodiff.variable.Variable"><span class="pre">Variable</span></a></span></span><a class="headerlink" href="#autodiff.variable.Variable.ln" title="Link to this definition"></a></dt>
+<dd><p>Returns the natural logarithm of the variable.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The natural logarithm of the variable.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="#autodiff.variable.Variable" title="autodiff.variable.Variable">Variable</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="autodiff.variable.Variable.max">
+<span class="sig-name descname"><span class="pre">max</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#autodiff.variable.Variable" title="autodiff.variable.Variable"><span class="pre">Variable</span></a></span></span><a class="headerlink" href="#autodiff.variable.Variable.max" title="Link to this definition"></a></dt>
+<dd><p>Returns the maximum value of the variable.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The maximum value of the variable.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="#autodiff.variable.Variable" title="autodiff.variable.Variable">Variable</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="autodiff.variable.Variable.mean">
+<span class="sig-name descname"><span class="pre">mean</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#autodiff.variable.Variable" title="autodiff.variable.Variable"><span class="pre">Variable</span></a></span></span><a class="headerlink" href="#autodiff.variable.Variable.mean" title="Link to this definition"></a></dt>
+<dd><p>Returns the mean of the variable.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The mean of the variable.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="#autodiff.variable.Variable" title="autodiff.variable.Variable">Variable</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="autodiff.variable.Variable.min">
+<span class="sig-name descname"><span class="pre">min</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#autodiff.variable.Variable" title="autodiff.variable.Variable"><span class="pre">Variable</span></a></span></span><a class="headerlink" href="#autodiff.variable.Variable.min" title="Link to this definition"></a></dt>
+<dd><p>Returns the minimum value of the variable.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The minimum value of the variable.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="#autodiff.variable.Variable" title="autodiff.variable.Variable">Variable</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="autodiff.variable.Variable.sigmoid">
+<span class="sig-name descname"><span class="pre">sigmoid</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#autodiff.variable.Variable" title="autodiff.variable.Variable"><span class="pre">Variable</span></a></span></span><a class="headerlink" href="#autodiff.variable.Variable.sigmoid" title="Link to this definition"></a></dt>
+<dd><p>Returns the sigmoid of the variable.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The sigmoid of the variable.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="#autodiff.variable.Variable" title="autodiff.variable.Variable">Variable</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="autodiff.variable.Variable.sin">
+<span class="sig-name descname"><span class="pre">sin</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#autodiff.variable.Variable" title="autodiff.variable.Variable"><span class="pre">Variable</span></a></span></span><a class="headerlink" href="#autodiff.variable.Variable.sin" title="Link to this definition"></a></dt>
+<dd><p>Returns the sine of the variable.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The sine of the variable.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="#autodiff.variable.Variable" title="autodiff.variable.Variable">Variable</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="autodiff.variable.Variable.std">
+<span class="sig-name descname"><span class="pre">std</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#autodiff.variable.Variable" title="autodiff.variable.Variable"><span class="pre">Variable</span></a></span></span><a class="headerlink" href="#autodiff.variable.Variable.std" title="Link to this definition"></a></dt>
+<dd><p>Returns the standard deviation of the variable.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The standard deviation of the variable.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="#autodiff.variable.Variable" title="autodiff.variable.Variable">Variable</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="autodiff.variable.Variable.sum">
+<span class="sig-name descname"><span class="pre">sum</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#autodiff.variable.Variable" title="autodiff.variable.Variable"><span class="pre">Variable</span></a></span></span><a class="headerlink" href="#autodiff.variable.Variable.sum" title="Link to this definition"></a></dt>
+<dd><p>Sums all elements of the variable.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The sum of all elements of the variable.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="#autodiff.variable.Variable" title="autodiff.variable.Variable">Variable</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="autodiff.variable.Variable.transpose">
+<span class="sig-name descname"><span class="pre">transpose</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#autodiff.variable.Variable" title="autodiff.variable.Variable"><span class="pre">Variable</span></a></span></span><a class="headerlink" href="#autodiff.variable.Variable.transpose" title="Link to this definition"></a></dt>
+<dd><p>Returns the transpose of the variable.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The transpose of the variable.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="#autodiff.variable.Variable" title="autodiff.variable.Variable">Variable</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="autodiff-operations">
+<h2>Autodiff - Operations<a class="headerlink" href="#autodiff-operations" title="Link to this heading"></a></h2>
+<p>Find the documentation for the Operations here!</p>
+<dl class="py class" id="module-autodiff.operation">
+<dt class="sig sig-object py" id="autodiff.operation.AbsoluteValue">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">autodiff.operation.</span></span><span class="sig-name descname"><span class="pre">AbsoluteValue</span></span><a class="headerlink" href="#autodiff.operation.AbsoluteValue" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#autodiff.operation.Operation" title="autodiff.operation.Operation"><code class="xref py py-class docutils literal notranslate"><span class="pre">Operation</span></code></a></p>
+<dl class="simple">
+<dt>The absolute value operation takes one input variable</dt><dd><p>and computes its absolute value.</p>
+</dd>
+</dl>
+<p>The output variable is computed by taking the absolute value of the input variable.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>inputs</strong> (<em>List</em><em>[</em><a class="reference internal" href="#autodiff.variable.Variable" title="autodiff.variable.Variable"><em>variable.Variable</em></a><em>]</em>) – A list of one input variable.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The output variable.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#autodiff.variable.Variable" title="autodiff.variable.Variable">variable.Variable</a></p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>None</strong> – </p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="autodiff.operation.AbsoluteValue.backward">
+<span class="sig-name descname"><span class="pre">backward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">incoming_gradient</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#autodiff.helper.InvalidDataError.None" title="autodiff.helper.InvalidDataError.None"><span class="pre">None</span></a></span></span><a class="headerlink" href="#autodiff.operation.AbsoluteValue.backward" title="Link to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>Computes the gradients of the input variable</dt><dd><p>with respect to the output variable.</p>
+</dd>
+<dt>The gradients are computed by calling the backward method of the input variable</dt><dd><p>with the incoming gradient.</p>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>incoming_gradient</strong> (<em>np.ndarray</em>) – The gradient of the output variable.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="autodiff.operation.Add">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">autodiff.operation.</span></span><span class="sig-name descname"><span class="pre">Add</span></span><a class="headerlink" href="#autodiff.operation.Add" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#autodiff.operation.Operation" title="autodiff.operation.Operation"><code class="xref py py-class docutils literal notranslate"><span class="pre">Operation</span></code></a></p>
+<p>Class to represent an addition operation.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="autodiff.operation.Add._inputs">
+<span class="sig-name descname"><span class="pre">_inputs</span></span><a class="headerlink" href="#autodiff.operation.Add._inputs" title="Link to this definition"></a></dt>
+<dd><p>List of input variables.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="autodiff.operation.Add._forward">
+<span class="sig-name descname"><span class="pre">_forward</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#autodiff.operation.Add._forward" title="Link to this definition"></a></dt>
+<dd><p>Computes the output of the addition operation.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="autodiff.operation.Add._backward">
+<span class="sig-name descname"><span class="pre">_backward</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#autodiff.operation.Add._backward" title="Link to this definition"></a></dt>
+<dd><p>computes the gradients of the input variables.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="autodiff.operation.Add.__str__">
+<span class="sig-name descname"><span class="pre">__str__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#autodiff.operation.Add.__str__" title="Link to this definition"></a></dt>
+<dd><p>returns a string representation of the operation.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="autodiff.operation.Add.backward">
+<span class="sig-name descname"><span class="pre">backward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">incoming_gradient</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#autodiff.helper.InvalidDataError.None" title="autodiff.helper.InvalidDataError.None"><span class="pre">None</span></a></span></span><a class="headerlink" href="#autodiff.operation.Add.backward" title="Link to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>Computes the gradients of the input variables</dt><dd><p>with respect to the output variable.</p>
+</dd>
+<dt>This method distributes the incoming gradient to the input variables by</dt><dd><p>calling their backward method.</p>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>incoming_gradient</strong> (<em>np.ndarray</em>) – The gradient of the output variable.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="autodiff.operation.Cosine">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">autodiff.operation.</span></span><span class="sig-name descname"><span class="pre">Cosine</span></span><a class="headerlink" href="#autodiff.operation.Cosine" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#autodiff.operation.Operation" title="autodiff.operation.Operation"><code class="xref py py-class docutils literal notranslate"><span class="pre">Operation</span></code></a></p>
+<p>The cosine operation takes one input variable and computes its cosine.</p>
+<p>The output is computed by taking the cosine of the input variable.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>inputs</strong> (<em>List</em><em>[</em><a class="reference internal" href="#autodiff.variable.Variable" title="autodiff.variable.Variable"><em>variable.Variable</em></a><em>]</em>) – A list of one input variable.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The output variable.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#autodiff.variable.Variable" title="autodiff.variable.Variable">variable.Variable</a></p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="autodiff.operation.Cosine.backward">
+<span class="sig-name descname"><span class="pre">backward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">incoming_gradient</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#autodiff.helper.InvalidDataError.None" title="autodiff.helper.InvalidDataError.None"><span class="pre">None</span></a></span></span><a class="headerlink" href="#autodiff.operation.Cosine.backward" title="Link to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>Computes the gradients of the input variables</dt><dd><p>with respect to the output variable.</p>
+</dd>
+<dt>The gradients are computed by calling the backward method of the input variable</dt><dd><p>with the incoming gradient.</p>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>incoming_gradient</strong> (<em>np.ndarray</em>) – The gradient of the output variable.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="autodiff.operation.Divide">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">autodiff.operation.</span></span><span class="sig-name descname"><span class="pre">Divide</span></span><a class="headerlink" href="#autodiff.operation.Divide" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#autodiff.operation.Operation" title="autodiff.operation.Operation"><code class="xref py py-class docutils literal notranslate"><span class="pre">Operation</span></code></a></p>
+<p>The division operation takes two input variables and computes their quotient.</p>
+<dl class="simple">
+<dt>The output is computed by dividing the first input variable</dt><dd><p>by the second input variable.</p>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>inputs</strong> (<em>List</em><em>[</em><a class="reference internal" href="#autodiff.variable.Variable" title="autodiff.variable.Variable"><em>variable.Variable</em></a><em>]</em>) – A list of two input variables.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The output variable.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#autodiff.variable.Variable" title="autodiff.variable.Variable">variable.Variable</a></p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="autodiff.operation.Divide.backward">
+<span class="sig-name descname"><span class="pre">backward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">incoming_gradient</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#autodiff.helper.InvalidDataError.None" title="autodiff.helper.InvalidDataError.None"><span class="pre">None</span></a></span></span><a class="headerlink" href="#autodiff.operation.Divide.backward" title="Link to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>Computes the gradients of the input variables</dt><dd><p>with respect to the output variable.</p>
+</dd>
+<dt>The gradients are computed by calling the backward method of the input variables</dt><dd><p>with the incoming gradient.</p>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>incoming_gradient</strong> (<em>np.ndarray</em>) – The gradient of the output variable.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="autodiff.operation.Exp">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">autodiff.operation.</span></span><span class="sig-name descname"><span class="pre">Exp</span></span><a class="headerlink" href="#autodiff.operation.Exp" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#autodiff.operation.Operation" title="autodiff.operation.Operation"><code class="xref py py-class docutils literal notranslate"><span class="pre">Operation</span></code></a></p>
+<p>The exp operation takes one input variable and computes its exponential value.</p>
+<dl class="simple">
+<dt>The output variable is computed by applying the exponential function</dt><dd><p>to the input variable.</p>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>inputs</strong> (<em>List</em><em>[</em><a class="reference internal" href="#autodiff.variable.Variable" title="autodiff.variable.Variable"><em>variable.Variable</em></a><em>]</em>) – A list of one input variable.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The output variable.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#autodiff.variable.Variable" title="autodiff.variable.Variable">variable.Variable</a></p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>None</strong> – </p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="autodiff.operation.Exp.backward">
+<span class="sig-name descname"><span class="pre">backward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">incoming_gradient</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#autodiff.helper.InvalidDataError.None" title="autodiff.helper.InvalidDataError.None"><span class="pre">None</span></a></span></span><a class="headerlink" href="#autodiff.operation.Exp.backward" title="Link to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>Computes the gradients of the input variable</dt><dd><p>with respect to the output variable.</p>
+</dd>
+<dt>The gradients are computed by calling the backward method</dt><dd><p>of the input variable with the incoming gradient.</p>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>incoming_gradient</strong> (<em>np.ndarray</em>) – The gradient of the output variable.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="autodiff.operation.Log">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">autodiff.operation.</span></span><span class="sig-name descname"><span class="pre">Log</span></span><a class="headerlink" href="#autodiff.operation.Log" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#autodiff.operation.Operation" title="autodiff.operation.Operation"><code class="xref py py-class docutils literal notranslate"><span class="pre">Operation</span></code></a></p>
+<p>The log operation takes one input variable and computes its natural logarithm.</p>
+<p>The output is computed by taking the natural logarithm of the input variable.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>inputs</strong> (<em>List</em><em>[</em><a class="reference internal" href="#autodiff.variable.Variable" title="autodiff.variable.Variable"><em>variable.Variable</em></a><em>]</em>) – A list of one input variable.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The output variable.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#autodiff.variable.Variable" title="autodiff.variable.Variable">variable.Variable</a></p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="#autodiff.helper.InvalidOperationError" title="autodiff.helper.InvalidOperationError"><strong>helper.InvalidOperationError</strong></a> – If the input variable is empty.</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="autodiff.operation.Log.backward">
+<span class="sig-name descname"><span class="pre">backward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">incoming_gradient</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#autodiff.helper.InvalidDataError.None" title="autodiff.helper.InvalidDataError.None"><span class="pre">None</span></a></span></span><a class="headerlink" href="#autodiff.operation.Log.backward" title="Link to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>Computes the gradients of the input variable</dt><dd><p>with respect to the output variable.</p>
+</dd>
+<dt>The gradients are computed by calling the backward method of the input variable</dt><dd><p>with the incoming gradient.</p>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>incoming_gradient</strong> (<em>np.ndarray</em>) – The gradient of the output variable.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="autodiff.operation.MatrixMultiply">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">autodiff.operation.</span></span><span class="sig-name descname"><span class="pre">MatrixMultiply</span></span><a class="headerlink" href="#autodiff.operation.MatrixMultiply" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#autodiff.operation.Operation" title="autodiff.operation.Operation"><code class="xref py py-class docutils literal notranslate"><span class="pre">Operation</span></code></a></p>
+<p>Matrix multiplication operation.</p>
+<p>The operation multiplies two input variables, which should be 2D matrices.</p>
+<p>The output variable is computed by multiplying the two input variables.</p>
+<p>If the input variables are not 2D matrices, an InvalidOperationError is raised.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>inputs</strong> (<em>List</em><em>[</em><a class="reference internal" href="#autodiff.variable.Variable" title="autodiff.variable.Variable"><em>variable.Variable</em></a><em>]</em>) – A list of two input variables.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The output variable.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#autodiff.variable.Variable" title="autodiff.variable.Variable">variable.Variable</a></p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="#autodiff.helper.InvalidOperationError" title="autodiff.helper.InvalidOperationError"><strong>helper.InvalidOperationError</strong></a> – If the input variables are not 2D matrices.</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="autodiff.operation.MatrixMultiply.backward">
+<span class="sig-name descname"><span class="pre">backward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">incoming_gradient</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#autodiff.helper.InvalidDataError.None" title="autodiff.helper.InvalidDataError.None"><span class="pre">None</span></a></span></span><a class="headerlink" href="#autodiff.operation.MatrixMultiply.backward" title="Link to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>Computes the gradients of the input variables</dt><dd><p>with respect to the output variable.</p>
+</dd>
+<dt>The gradients are computed by calling the backward method of the input variables</dt><dd><p>with the incoming gradient.</p>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>incoming_gradient</strong> (<em>np.ndarray</em>) – The gradient of the output variable.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="autodiff.operation.Max">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">autodiff.operation.</span></span><span class="sig-name descname"><span class="pre">Max</span></span><a class="headerlink" href="#autodiff.operation.Max" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#autodiff.operation.Operation" title="autodiff.operation.Operation"><code class="xref py py-class docutils literal notranslate"><span class="pre">Operation</span></code></a></p>
+<p>The max operation takes one input variable and computes its maximum value.</p>
+<p>The output is computed by taking the maximum of the input variable.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>inputs</strong> (<em>List</em><em>[</em><a class="reference internal" href="#autodiff.variable.Variable" title="autodiff.variable.Variable"><em>variable.Variable</em></a><em>]</em>) – A list of one input variable.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The output variable.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#autodiff.variable.Variable" title="autodiff.variable.Variable">variable.Variable</a></p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="#autodiff.helper.InvalidOperationError" title="autodiff.helper.InvalidOperationError"><strong>helper.InvalidOperationError</strong></a> – If the input variable is empty.</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="autodiff.operation.Max.backward">
+<span class="sig-name descname"><span class="pre">backward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">incoming_gradient</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#autodiff.helper.InvalidDataError.None" title="autodiff.helper.InvalidDataError.None"><span class="pre">None</span></a></span></span><a class="headerlink" href="#autodiff.operation.Max.backward" title="Link to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>Computes the gradients of the input variables</dt><dd><p>with respect to the output variable.</p>
+</dd>
+<dt>The gradients are computed by calling the backward method of the input variable</dt><dd><p>with the incoming gradient.</p>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>incoming_gradient</strong> (<em>np.ndarray</em>) – The gradient of the output variable.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="autodiff.operation.Mean">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">autodiff.operation.</span></span><span class="sig-name descname"><span class="pre">Mean</span></span><a class="headerlink" href="#autodiff.operation.Mean" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#autodiff.operation.Operation" title="autodiff.operation.Operation"><code class="xref py py-class docutils literal notranslate"><span class="pre">Operation</span></code></a></p>
+<p>The mean operation takes one input variable and computes its mean.</p>
+<p>The output is computed by taking the mean of the input variable.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>inputs</strong> (<em>List</em><em>[</em><a class="reference internal" href="#autodiff.variable.Variable" title="autodiff.variable.Variable"><em>variable.Variable</em></a><em>]</em>) – A list of one input variable.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The output variable.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#autodiff.variable.Variable" title="autodiff.variable.Variable">variable.Variable</a></p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="autodiff.operation.Mean.backward">
+<span class="sig-name descname"><span class="pre">backward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">incoming_gradient</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#autodiff.helper.InvalidDataError.None" title="autodiff.helper.InvalidDataError.None"><span class="pre">None</span></a></span></span><a class="headerlink" href="#autodiff.operation.Mean.backward" title="Link to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>Computes the gradients of the input variables</dt><dd><p>with respect to the output variable.</p>
+</dd>
+<dt>The gradients are computed by calling the backward method of the input variable</dt><dd><p>with the incoming gradient.</p>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>incoming_gradient</strong> (<em>np.ndarray</em>) – The gradient of the output variable.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="autodiff.operation.Min">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">autodiff.operation.</span></span><span class="sig-name descname"><span class="pre">Min</span></span><a class="headerlink" href="#autodiff.operation.Min" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#autodiff.operation.Operation" title="autodiff.operation.Operation"><code class="xref py py-class docutils literal notranslate"><span class="pre">Operation</span></code></a></p>
+<p>The min operation takes one input variable and computes its minimum value.</p>
+<p>The output is computed by taking the minimum of the input variable.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>inputs</strong> (<em>List</em><em>[</em><a class="reference internal" href="#autodiff.variable.Variable" title="autodiff.variable.Variable"><em>variable.Variable</em></a><em>]</em>) – A list of one input variable.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The output variable.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#autodiff.variable.Variable" title="autodiff.variable.Variable">variable.Variable</a></p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="#autodiff.helper.InvalidOperationError" title="autodiff.helper.InvalidOperationError"><strong>helper.InvalidOperationError</strong></a> – If the input variable is empty.</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="autodiff.operation.Min.backward">
+<span class="sig-name descname"><span class="pre">backward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">incoming_gradient</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#autodiff.helper.InvalidDataError.None" title="autodiff.helper.InvalidDataError.None"><span class="pre">None</span></a></span></span><a class="headerlink" href="#autodiff.operation.Min.backward" title="Link to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>Computes the gradients of the input variables</dt><dd><p>with respect to the output variable.</p>
+</dd>
+<dt>The gradients are computed by calling the backward method of the input variable</dt><dd><p>with the incoming gradient.</p>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>incoming_gradient</strong> (<em>np.ndarray</em>) – The gradient of the output variable.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="autodiff.operation.Multiply">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">autodiff.operation.</span></span><span class="sig-name descname"><span class="pre">Multiply</span></span><a class="headerlink" href="#autodiff.operation.Multiply" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#autodiff.operation.Operation" title="autodiff.operation.Operation"><code class="xref py py-class docutils literal notranslate"><span class="pre">Operation</span></code></a></p>
+<p>Class to represent an element-by-element multiplication operation.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="autodiff.operation.Multiply._inputs">
+<span class="sig-name descname"><span class="pre">_inputs</span></span><a class="headerlink" href="#autodiff.operation.Multiply._inputs" title="Link to this definition"></a></dt>
+<dd><p>List of input variables.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="autodiff.operation.Multiply._forward">
+<span class="sig-name descname"><span class="pre">_forward</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#autodiff.operation.Multiply._forward" title="Link to this definition"></a></dt>
+<dd><p>computes the output of the multiplication operation.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="autodiff.operation.Multiply._backward">
+<span class="sig-name descname"><span class="pre">_backward</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#autodiff.operation.Multiply._backward" title="Link to this definition"></a></dt>
+<dd><p>computes the gradients of the input variables.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="autodiff.operation.Multiply.__str__">
+<span class="sig-name descname"><span class="pre">__str__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#autodiff.operation.Multiply.__str__" title="Link to this definition"></a></dt>
+<dd><p>returns a string representation of the operation.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="autodiff.operation.Multiply.backward">
+<span class="sig-name descname"><span class="pre">backward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">incoming_gradient</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#autodiff.helper.InvalidDataError.None" title="autodiff.helper.InvalidDataError.None"><span class="pre">None</span></a></span></span><a class="headerlink" href="#autodiff.operation.Multiply.backward" title="Link to this definition"></a></dt>
+<dd><p>Computes the gradients of the input variables.</p>
+<dl class="simple">
+<dt>The gradients are computed by element-by-element multiplying</dt><dd><p>the values of the two input variables with the incoming gradient.</p>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>incoming_gradient</strong> (<em>np.ndarray</em>) – The gradient of the output variable.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="autodiff.operation.Negate">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">autodiff.operation.</span></span><span class="sig-name descname"><span class="pre">Negate</span></span><a class="headerlink" href="#autodiff.operation.Negate" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#autodiff.operation.Operation" title="autodiff.operation.Operation"><code class="xref py py-class docutils literal notranslate"><span class="pre">Operation</span></code></a></p>
+<p>The negate operation takes one input variable and computes its negation.</p>
+<p>The output variable is computed by negating the input variable.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>inputs</strong> (<em>List</em><em>[</em><a class="reference internal" href="#autodiff.variable.Variable" title="autodiff.variable.Variable"><em>variable.Variable</em></a><em>]</em>) – A list of one input variable.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The output variable.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#autodiff.variable.Variable" title="autodiff.variable.Variable">variable.Variable</a></p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>None</strong> – </p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="autodiff.operation.Negate.backward">
+<span class="sig-name descname"><span class="pre">backward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">incoming_gradient</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#autodiff.helper.InvalidDataError.None" title="autodiff.helper.InvalidDataError.None"><span class="pre">None</span></a></span></span><a class="headerlink" href="#autodiff.operation.Negate.backward" title="Link to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>Computes the gradients of the input variable</dt><dd><p>with respect to the output variable.</p>
+</dd>
+<dt>The gradients are computed by calling the backward method of the input variable</dt><dd><p>with the incoming gradient.</p>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>incoming_gradient</strong> (<em>np.ndarray</em>) – The gradient of the output variable.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="autodiff.operation.Operation">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">autodiff.operation.</span></span><span class="sig-name descname"><span class="pre">Operation</span></span><a class="headerlink" href="#autodiff.operation.Operation" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ABC</span></code></p>
+<p>Abstract class for operations in the computation graph.</p>
+<p>Subclasses should implement the _forward and _backward methods.</p>
+<p>The _forward method should compute the output of the operation
+given the input variables.</p>
+<p>The _backward method should compute the gradients of the input
+variables with respect to the output variable.</p>
+<p>The _delete_gradient method should delete the gradients of the
+input variables.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="autodiff.operation.Operation._inputs">
+<span class="sig-name descname"><span class="pre">_inputs</span></span><a class="headerlink" href="#autodiff.operation.Operation._inputs" title="Link to this definition"></a></dt>
+<dd><p>List of input variables.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="autodiff.operation.Operation.__call__">
+<span class="sig-name descname"><span class="pre">__call__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#autodiff.operation.Operation.__call__" title="Link to this definition"></a></dt>
+<dd><p>Calls the operation with the given input variables.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="autodiff.operation.Operation._delete_gradient">
+<span class="sig-name descname"><span class="pre">_delete_gradient</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#autodiff.operation.Operation._delete_gradient" title="Link to this definition"></a></dt>
+<dd><p>Deletes the gradients of the input variables.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="autodiff.operation.Operation._forward">
+<span class="sig-name descname"><span class="pre">_forward</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#autodiff.operation.Operation._forward" title="Link to this definition"></a></dt>
+<dd><p>Computes the output of the operation given the input variables.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="autodiff.operation.Operation._backward">
+<span class="sig-name descname"><span class="pre">_backward</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#autodiff.operation.Operation._backward" title="Link to this definition"></a></dt>
+<dd><p>Computes the gradients of the input variables
+with respect to the output variable.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="autodiff.operation.Operation.backward">
+<em class="property"><span class="k"><span class="pre">abstractmethod</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">backward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">incoming_gradient</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#autodiff.helper.InvalidDataError.None" title="autodiff.helper.InvalidDataError.None"><span class="pre">None</span></a></span></span><a class="headerlink" href="#autodiff.operation.Operation.backward" title="Link to this definition"></a></dt>
+<dd><p>Abstract method to implement the backward pass of the operation.</p>
+<p>This method should compute the gradients of the input variables given the
+incoming gradient of the output variable. The gradients should be
+stored in the corresponding gradient attribute of the input variables.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>incoming_gradient</strong> (<em>np.ndarray</em>) – The gradient of the output variable.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="autodiff.operation.Operation.delete_gradient">
+<span class="sig-name descname"><span class="pre">delete_gradient</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#autodiff.helper.InvalidDataError.None" title="autodiff.helper.InvalidDataError.None"><span class="pre">None</span></a></span></span><a class="headerlink" href="#autodiff.operation.Operation.delete_gradient" title="Link to this definition"></a></dt>
+<dd><p>Deletes the gradients of the input variables.</p>
+<p>This method iterates over the input variables and calls their
+delete_gradient method to delete their gradients.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="autodiff.operation.Power">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">autodiff.operation.</span></span><span class="sig-name descname"><span class="pre">Power</span></span><a class="headerlink" href="#autodiff.operation.Power" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#autodiff.operation.Operation" title="autodiff.operation.Operation"><code class="xref py py-class docutils literal notranslate"><span class="pre">Operation</span></code></a></p>
+<dl class="simple">
+<dt>The power operation takes two input variables and computes the power of</dt><dd><p>the first input variable to the second input variable.</p>
+</dd>
+<dt>The output is computed by taking the power of the first input variable</dt><dd><p>to the second input variable.</p>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>inputs</strong> (<em>List</em><em>[</em><a class="reference internal" href="#autodiff.variable.Variable" title="autodiff.variable.Variable"><em>variable.Variable</em></a><em>]</em>) – A list of two input variables.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The output variable.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#autodiff.variable.Variable" title="autodiff.variable.Variable">variable.Variable</a></p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="#autodiff.helper.InvalidOperationError" title="autodiff.helper.InvalidOperationError"><strong>helper.InvalidOperationError</strong></a> – If the input variables are not of size
+    (n,) or (n,) or (1,) or (,n).</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="autodiff.operation.Power.backward">
+<span class="sig-name descname"><span class="pre">backward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">incoming_gradient</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#autodiff.helper.InvalidDataError.None" title="autodiff.helper.InvalidDataError.None"><span class="pre">None</span></a></span></span><a class="headerlink" href="#autodiff.operation.Power.backward" title="Link to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>Computes the gradients of the input variables</dt><dd><p>with respect to the output variable.</p>
+</dd>
+<dt>The gradients are computed by calling the backward method of the input variables</dt><dd><p>with the incoming gradient.</p>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>incoming_gradient</strong> (<em>np.ndarray</em>) – The gradient of the output variable.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="autodiff.operation.Sigmoid">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">autodiff.operation.</span></span><span class="sig-name descname"><span class="pre">Sigmoid</span></span><a class="headerlink" href="#autodiff.operation.Sigmoid" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#autodiff.operation.Operation" title="autodiff.operation.Operation"><code class="xref py py-class docutils literal notranslate"><span class="pre">Operation</span></code></a></p>
+<p>The sigmoid operation takes one input variable and computes its sigmoid value.</p>
+<dl class="simple">
+<dt>The output variable is computed by applying the sigmoid function</dt><dd><p>to the input variable.</p>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>inputs</strong> (<em>List</em><em>[</em><a class="reference internal" href="#autodiff.variable.Variable" title="autodiff.variable.Variable"><em>variable.Variable</em></a><em>]</em>) – A list of one input variable.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The output variable.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#autodiff.variable.Variable" title="autodiff.variable.Variable">variable.Variable</a></p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>None</strong> – </p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="autodiff.operation.Sigmoid.backward">
+<span class="sig-name descname"><span class="pre">backward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">incoming_gradient</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#autodiff.helper.InvalidDataError.None" title="autodiff.helper.InvalidDataError.None"><span class="pre">None</span></a></span></span><a class="headerlink" href="#autodiff.operation.Sigmoid.backward" title="Link to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>Computes the gradients of the input variable</dt><dd><p>with respect to the output variable.</p>
+</dd>
+<dt>The gradients are computed by calling the backward method of the input variable</dt><dd><p>with the incoming gradient.</p>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>incoming_gradient</strong> (<em>np.ndarray</em>) – The gradient of the output variable.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="autodiff.operation.Sine">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">autodiff.operation.</span></span><span class="sig-name descname"><span class="pre">Sine</span></span><a class="headerlink" href="#autodiff.operation.Sine" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#autodiff.operation.Operation" title="autodiff.operation.Operation"><code class="xref py py-class docutils literal notranslate"><span class="pre">Operation</span></code></a></p>
+<p>Class to represent a sine operation.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="autodiff.operation.Sine._inputs">
+<span class="sig-name descname"><span class="pre">_inputs</span></span><a class="headerlink" href="#autodiff.operation.Sine._inputs" title="Link to this definition"></a></dt>
+<dd><p>List of input variables.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="autodiff.operation.Sine._forward">
+<span class="sig-name descname"><span class="pre">_forward</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#autodiff.operation.Sine._forward" title="Link to this definition"></a></dt>
+<dd><p>computes the output of the sine operation.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="autodiff.operation.Sine._backward">
+<span class="sig-name descname"><span class="pre">_backward</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#autodiff.operation.Sine._backward" title="Link to this definition"></a></dt>
+<dd><p>computes the gradients of the input variables.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="autodiff.operation.Sine.__str__">
+<span class="sig-name descname"><span class="pre">__str__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#autodiff.operation.Sine.__str__" title="Link to this definition"></a></dt>
+<dd><p>returns a string representation of the operation.</p>
+</dd></dl>
+
+<p class="rubric">Notes</p>
+<dl class="simple">
+<dt>The sine operation is element-by-element, i.e.,</dt><dd><p>it operates on each element of the input variable independently.</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="autodiff.operation.Sine.backward">
+<span class="sig-name descname"><span class="pre">backward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">incoming_gradient</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#autodiff.helper.InvalidDataError.None" title="autodiff.helper.InvalidDataError.None"><span class="pre">None</span></a></span></span><a class="headerlink" href="#autodiff.operation.Sine.backward" title="Link to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>Computes the gradients of the input variables</dt><dd><p>with respect to the output variable.</p>
+</dd>
+<dt>The gradients are computed by element-by-element multiplying the values of</dt><dd><p>the input variable with the cosine of the input variable and
+the incoming gradient.</p>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>incoming_gradient</strong> (<em>np.ndarray</em>) – The gradient of the output variable.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="autodiff.operation.Std">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">autodiff.operation.</span></span><span class="sig-name descname"><span class="pre">Std</span></span><a class="headerlink" href="#autodiff.operation.Std" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#autodiff.operation.Operation" title="autodiff.operation.Operation"><code class="xref py py-class docutils literal notranslate"><span class="pre">Operation</span></code></a></p>
+<dl class="simple">
+<dt>The standard deviation operation takes one input variable</dt><dd><p>and computes its standard deviation.</p>
+</dd>
+</dl>
+<p>The output is computed by taking the standard deviation of the input variable.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>inputs</strong> (<em>List</em><em>[</em><a class="reference internal" href="#autodiff.variable.Variable" title="autodiff.variable.Variable"><em>variable.Variable</em></a><em>]</em>) – A list of one input variable.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The output variable.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#autodiff.variable.Variable" title="autodiff.variable.Variable">variable.Variable</a></p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="#autodiff.helper.InvalidOperationError" title="autodiff.helper.InvalidOperationError"><strong>helper.InvalidOperationError</strong></a> – If the input variable is empty.</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="autodiff.operation.Std.backward">
+<span class="sig-name descname"><span class="pre">backward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">incoming_gradient</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#autodiff.helper.InvalidDataError.None" title="autodiff.helper.InvalidDataError.None"><span class="pre">None</span></a></span></span><a class="headerlink" href="#autodiff.operation.Std.backward" title="Link to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>Computes the gradients of the input variables</dt><dd><p>with respect to the output variable.</p>
+</dd>
+<dt>The gradients are computed by calling the backward method of the input variable</dt><dd><p>with the incoming gradient.</p>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>incoming_gradient</strong> (<em>np.ndarray</em>) – The gradient of the output variable.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#autodiff.helper.InvalidDifferentiationError" title="autodiff.helper.InvalidDifferentiationError"><strong>helper.InvalidDifferentiationError</strong></a> – If the standard deviation of
+    the input variable is 0.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="autodiff.operation.Subtract">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">autodiff.operation.</span></span><span class="sig-name descname"><span class="pre">Subtract</span></span><a class="headerlink" href="#autodiff.operation.Subtract" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#autodiff.operation.Operation" title="autodiff.operation.Operation"><code class="xref py py-class docutils literal notranslate"><span class="pre">Operation</span></code></a></p>
+<p>The subtraction operation takes two input variables and computes their difference.</p>
+<dl class="simple">
+<dt>The output is computed by subtracting the second input variable from</dt><dd><p>the first input variable.</p>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>inputs</strong> (<em>List</em><em>[</em><a class="reference internal" href="#autodiff.variable.Variable" title="autodiff.variable.Variable"><em>variable.Variable</em></a><em>]</em>) – A list of two input variables.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The output variable.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#autodiff.variable.Variable" title="autodiff.variable.Variable">variable.Variable</a></p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="autodiff.operation.Subtract.backward">
+<span class="sig-name descname"><span class="pre">backward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">incoming_gradient</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#autodiff.helper.InvalidDataError.None" title="autodiff.helper.InvalidDataError.None"><span class="pre">None</span></a></span></span><a class="headerlink" href="#autodiff.operation.Subtract.backward" title="Link to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>Computes the gradients of the input variables</dt><dd><p>with respect to the output variable.</p>
+</dd>
+<dt>The gradients are computed by calling the backward method of the input variables</dt><dd><p>with the incoming gradient.</p>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>incoming_gradient</strong> (<em>np.ndarray</em>) – The gradient of the output variable.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="autodiff.operation.Sum">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">autodiff.operation.</span></span><span class="sig-name descname"><span class="pre">Sum</span></span><a class="headerlink" href="#autodiff.operation.Sum" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#autodiff.operation.Operation" title="autodiff.operation.Operation"><code class="xref py py-class docutils literal notranslate"><span class="pre">Operation</span></code></a></p>
+<p>Class to represent a summation operation.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="autodiff.operation.Sum._inputs">
+<span class="sig-name descname"><span class="pre">_inputs</span></span><a class="headerlink" href="#autodiff.operation.Sum._inputs" title="Link to this definition"></a></dt>
+<dd><p>List of input variables.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="autodiff.operation.Sum._forward">
+<span class="sig-name descname"><span class="pre">_forward</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#autodiff.operation.Sum._forward" title="Link to this definition"></a></dt>
+<dd><p>computes the output of the summation operation.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="autodiff.operation.Sum._backward">
+<span class="sig-name descname"><span class="pre">_backward</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#autodiff.operation.Sum._backward" title="Link to this definition"></a></dt>
+<dd><p>computes the gradients of the input variables.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="autodiff.operation.Sum.__str__">
+<span class="sig-name descname"><span class="pre">__str__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#autodiff.operation.Sum.__str__" title="Link to this definition"></a></dt>
+<dd><p>returns a string representation of the operation.</p>
+</dd></dl>
+
+<p class="rubric">Notes</p>
+<p>The summation operation takes a single input variable and computes
+the sum of all its elements.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="autodiff.operation.Sum.backward">
+<span class="sig-name descname"><span class="pre">backward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">incoming_gradient</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#autodiff.helper.InvalidDataError.None" title="autodiff.helper.InvalidDataError.None"><span class="pre">None</span></a></span></span><a class="headerlink" href="#autodiff.operation.Sum.backward" title="Link to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>Computes the gradients of the input variables</dt><dd><p>with respect to the output variable.</p>
+</dd>
+<dt>The gradients are computed by broadcasting the incoming gradient</dt><dd><p>to the shape of the input variable and
+then calling _backward on the input variable.</p>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>incoming_gradient</strong> (<em>np.ndarray</em>) – The gradient of the output variable.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="autodiff.operation.Transpose">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">autodiff.operation.</span></span><span class="sig-name descname"><span class="pre">Transpose</span></span><a class="headerlink" href="#autodiff.operation.Transpose" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#autodiff.operation.Operation" title="autodiff.operation.Operation"><code class="xref py py-class docutils literal notranslate"><span class="pre">Operation</span></code></a></p>
+<p>The transpose operation takes one input variable and computes its transpose.</p>
+<p>The output variable is computed by transposing the input variable.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>inputs</strong> (<em>List</em><em>[</em><a class="reference internal" href="#autodiff.variable.Variable" title="autodiff.variable.Variable"><em>variable.Variable</em></a><em>]</em>) – A list of one input variable.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The output variable.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#autodiff.variable.Variable" title="autodiff.variable.Variable">variable.Variable</a></p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>None</strong> – </p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="autodiff.operation.Transpose.backward">
+<span class="sig-name descname"><span class="pre">backward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">incoming_gradient</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#autodiff.helper.InvalidDataError.None" title="autodiff.helper.InvalidDataError.None"><span class="pre">None</span></a></span></span><a class="headerlink" href="#autodiff.operation.Transpose.backward" title="Link to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>Computes the gradients of the input variable</dt><dd><p>with respect to the output variable.</p>
+</dd>
+<dt>The gradients are computed by calling the backward method of the input variable</dt><dd><p>with the incoming gradient.</p>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>incoming_gradient</strong> (<em>np.ndarray</em>) – The gradient of the output variable.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="autodiff-helper">
+<h2>Autodiff - Helper<a class="headerlink" href="#autodiff-helper" title="Link to this heading"></a></h2>
+<p>Find the documentation for the Helper here!</p>
+<dl class="py exception" id="module-autodiff.helper">
+<dt class="sig sig-object py" id="autodiff.helper.InvalidDataError">
+<em class="property"><span class="k"><span class="pre">exception</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">autodiff.helper.</span></span><span class="sig-name descname"><span class="pre">InvalidDataError</span></span><a class="headerlink" href="#autodiff.helper.InvalidDataError" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></p>
+<p>Raised when the data contains invalid values.</p>
+<p>This exception is raised when the data passed to an operation contains
+invalid values such as NaN or infinity.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="autodiff.helper.InvalidDataError.None">
+<span class="sig-name descname"><span class="pre">None</span></span><a class="headerlink" href="#autodiff.helper.InvalidDataError.None" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="autodiff.helper.InvalidDataError.__str__">
+<span class="sig-name descname"><span class="pre">__str__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#autodiff.helper.InvalidDataError.__str__" title="Link to this definition"></a></dt>
+<dd><p>Returns a string representation of the exception.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="autodiff.helper.InvalidDifferentiationError">
+<em class="property"><span class="k"><span class="pre">exception</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">autodiff.helper.</span></span><span class="sig-name descname"><span class="pre">InvalidDifferentiationError</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#autodiff.helper.InvalidDifferentiationError" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></p>
+<p>Raised when the differentiation of an operation is invalid.</p>
+<p>This exception is raised when the differentiation of an operation is invalid. This
+can happen if the operation is not properly implemented or if the operation
+is not differentiable.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="autodiff.helper.InvalidDifferentiationError.message">
+<span class="sig-name descname"><span class="pre">message</span></span><a class="headerlink" href="#autodiff.helper.InvalidDifferentiationError.message" title="Link to this definition"></a></dt>
+<dd><p>A message describing the invalid differentiation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="autodiff.helper.InvalidDifferentiationError.__str__">
+<span class="sig-name descname"><span class="pre">__str__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#autodiff.helper.InvalidDifferentiationError.__str__" title="Link to this definition"></a></dt>
+<dd><p>Returns a string representation of the exception.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="autodiff.helper.InvalidGradientError">
+<em class="property"><span class="k"><span class="pre">exception</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">autodiff.helper.</span></span><span class="sig-name descname"><span class="pre">InvalidGradientError</span></span><a class="headerlink" href="#autodiff.helper.InvalidGradientError" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></p>
+<p>Raised when the gradient contains invalid values.</p>
+<p>This exception is raised when the gradient passed to an operation contains
+invalid values such as NaN or infinity.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="autodiff.helper.InvalidGradientError.None">
+<span class="sig-name descname"><span class="pre">None</span></span><a class="headerlink" href="#autodiff.helper.InvalidGradientError.None" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="autodiff.helper.InvalidGradientError.__str__">
+<span class="sig-name descname"><span class="pre">__str__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#autodiff.helper.InvalidGradientError.__str__" title="Link to this definition"></a></dt>
+<dd><p>Returns a string representation of the exception.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="autodiff.helper.InvalidGradientShapeError">
+<em class="property"><span class="k"><span class="pre">exception</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">autodiff.helper.</span></span><span class="sig-name descname"><span class="pre">InvalidGradientShapeError</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_shape</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gradient_shape</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#autodiff.helper.InvalidGradientShapeError" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></p>
+<p>Raised when the gradient shape does not match the data shape.</p>
+<p>This exception is raised when the shape of the gradient passed to an
+operation does not match the shape of the data.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="autodiff.helper.InvalidGradientShapeError.data_shape">
+<span class="sig-name descname"><span class="pre">data_shape</span></span><a class="headerlink" href="#autodiff.helper.InvalidGradientShapeError.data_shape" title="Link to this definition"></a></dt>
+<dd><p>The shape of the data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>tuple[int]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="autodiff.helper.InvalidGradientShapeError.gradient_shape">
+<span class="sig-name descname"><span class="pre">gradient_shape</span></span><a class="headerlink" href="#autodiff.helper.InvalidGradientShapeError.gradient_shape" title="Link to this definition"></a></dt>
+<dd><p>The shape of the gradient.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>tuple[int]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="autodiff.helper.InvalidGradientShapeError.__str__">
+<span class="sig-name descname"><span class="pre">__str__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#autodiff.helper.InvalidGradientShapeError.__str__" title="Link to this definition"></a></dt>
+<dd><p>Returns a string representation of the exception.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="autodiff.helper.InvalidOperationError">
+<em class="property"><span class="k"><span class="pre">exception</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">autodiff.helper.</span></span><span class="sig-name descname"><span class="pre">InvalidOperationError</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#autodiff.helper.InvalidOperationError" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></p>
+<p>Raised when an operation is invalid.</p>
+<p>This exception is raised when an operation is invalid. An operation is invalid if
+it does not follow the rules of the autodiff engine.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="autodiff.helper.InvalidOperationError.message">
+<span class="sig-name descname"><span class="pre">message</span></span><a class="headerlink" href="#autodiff.helper.InvalidOperationError.message" title="Link to this definition"></a></dt>
+<dd><p>A message describing the invalid operation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="autodiff.helper.InvalidOperationError.__str__">
+<span class="sig-name descname"><span class="pre">__str__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#autodiff.helper.InvalidOperationError.__str__" title="Link to this definition"></a></dt>
+<dd><p>Returns a string representation of the exception.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="autodiff.helper.JacobianError">
+<em class="property"><span class="k"><span class="pre">exception</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">autodiff.helper.</span></span><span class="sig-name descname"><span class="pre">JacobianError</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">variable</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#autodiff.variable.Variable" title="autodiff.variable.Variable"><span class="pre">variable.Variable</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#autodiff.helper.JacobianError" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></p>
+<p>Raised when the derivative of a variable cannot be computed.</p>
+<dl class="simple">
+<dt>This exception is raised when the autodiff engine</dt><dd><p>cannot compute the derivative of a variable.</p>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="autodiff.helper.JacobianError.variable">
+<span class="sig-name descname"><span class="pre">variable</span></span><a class="headerlink" href="#autodiff.helper.JacobianError.variable" title="Link to this definition"></a></dt>
+<dd><p>The variable which the derivative cannot be computed for.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#autodiff.variable.Variable" title="autodiff.variable.Variable">Variable</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="autodiff.helper.JacobianError.__str__">
+<span class="sig-name descname"><span class="pre">__str__</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#autodiff.helper.JacobianError.__str__" title="Link to this definition"></a></dt>
+<dd><p>Returns a string representation of the exception.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="Autodiff Engine &amp; Models documentation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="models_reference.html" class="btn btn-neutral float-right" title="API Reference - Autodiff Models" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Group 33.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

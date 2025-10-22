@@ -1,0 +1,59 @@
+API Reference - Autodiff Models
+===============================
+Find the documentation for the Autodiff Models here!
+
+Models - Baseclasses
+--------------------
+Find the documentation for the Baseclasses here!
+
+.. automodule:: models.baseclass
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+
+Models - Models
+---------------
+Find the documentation for the Models here!
+
+.. automodule:: models.models
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+
+Models - Loss Functions
+-----------------------
+Find the documentation for the Loss Functions here!
+
+.. automodule:: models.loss_functions
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Models - Initialization methods
+-------------------------------
+Find the documentation for the Initialization methods here!
+
+.. automodule:: models.initializations
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Models - Neural Network
+-----------------------
+Find the documentation for the Neural Network here!
+
+.. automodule:: models.neural_network
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Models - Helper
+-----------------------
+Find the documentation for the Helper here!
+
+.. automodule:: models.helpers
+   :members:
+   :undoc-members:
+   :show-inheritance:

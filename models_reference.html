@@ -1,0 +1,823 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>API Reference - Autodiff Models &mdash; Autodiff Engine &amp; Models 0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=2709fde1"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="API Reference - Autodiff Engine" href="autodiff_reference.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Autodiff Engine & Models
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="autodiff_reference.html">API Reference - Autodiff Engine</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">API Reference - Autodiff Models</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#models-baseclasses">Models - Baseclasses</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#models.baseclass.RegressionModelABC"><code class="docutils literal notranslate"><span class="pre">RegressionModelABC</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#models.baseclass.RegressionModelABC._parameters"><code class="docutils literal notranslate"><span class="pre">RegressionModelABC._parameters</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#models.baseclass.RegressionModelABC.fit_gradient_descent"><code class="docutils literal notranslate"><span class="pre">RegressionModelABC.fit_gradient_descent()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id0"><code class="docutils literal notranslate"><span class="pre">RegressionModelABC.fit_gradient_descent()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#models.baseclass.RegressionModelABC.parameters"><code class="docutils literal notranslate"><span class="pre">RegressionModelABC.parameters</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#models.baseclass.RegressionModelABC.predict"><code class="docutils literal notranslate"><span class="pre">RegressionModelABC.predict()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#models-models">Models - Models</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#models.models.LogisticRegression"><code class="docutils literal notranslate"><span class="pre">LogisticRegression</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#models.models.LogisticRegression._parameters"><code class="docutils literal notranslate"><span class="pre">LogisticRegression._parameters</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#models.models.LogisticRegression.predict"><code class="docutils literal notranslate"><span class="pre">LogisticRegression.predict()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id1"><code class="docutils literal notranslate"><span class="pre">LogisticRegression.predict()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#models.models.MultipleLinearRegression"><code class="docutils literal notranslate"><span class="pre">MultipleLinearRegression</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#models.models.MultipleLinearRegression._parameters"><code class="docutils literal notranslate"><span class="pre">MultipleLinearRegression._parameters</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#models.models.MultipleLinearRegression.predict"><code class="docutils literal notranslate"><span class="pre">MultipleLinearRegression.predict()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id2"><code class="docutils literal notranslate"><span class="pre">MultipleLinearRegression.predict()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#models.models.OLSLinearRegression"><code class="docutils literal notranslate"><span class="pre">OLSLinearRegression</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#models.models.OLSLinearRegression._parameters"><code class="docutils literal notranslate"><span class="pre">OLSLinearRegression._parameters</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#models.models.OLSLinearRegression.fit"><code class="docutils literal notranslate"><span class="pre">OLSLinearRegression.fit()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#models.models.OLSLinearRegression.predict"><code class="docutils literal notranslate"><span class="pre">OLSLinearRegression.predict()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id3"><code class="docutils literal notranslate"><span class="pre">OLSLinearRegression.fit()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#models-loss-functions">Models - Loss Functions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#models.loss_functions.lasso_loss"><code class="docutils literal notranslate"><span class="pre">lasso_loss()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#models.loss_functions.log_loss"><code class="docutils literal notranslate"><span class="pre">log_loss()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#models.loss_functions.mse_loss"><code class="docutils literal notranslate"><span class="pre">mse_loss()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#models.loss_functions.mse_loss_nn"><code class="docutils literal notranslate"><span class="pre">mse_loss_nn()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#models.loss_functions.ridge_loss"><code class="docutils literal notranslate"><span class="pre">ridge_loss()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#models-initialization-methods">Models - Initialization methods</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#models.initializations.standard_gaussian_initialization"><code class="docutils literal notranslate"><span class="pre">standard_gaussian_initialization()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#models-neural-network">Models - Neural Network</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#models.neural_network.NeuralNetwork"><code class="docutils literal notranslate"><span class="pre">NeuralNetwork</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#models.neural_network.NeuralNetwork._input_shape"><code class="docutils literal notranslate"><span class="pre">NeuralNetwork._input_shape</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#models.neural_network.NeuralNetwork._output_shape"><code class="docutils literal notranslate"><span class="pre">NeuralNetwork._output_shape</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#models.neural_network.NeuralNetwork._immediate_layers"><code class="docutils literal notranslate"><span class="pre">NeuralNetwork._immediate_layers</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#models.neural_network.NeuralNetwork._nn_nodes"><code class="docutils literal notranslate"><span class="pre">NeuralNetwork._nn_nodes</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#models.neural_network.NeuralNetwork._nn_outputs"><code class="docutils literal notranslate"><span class="pre">NeuralNetwork._nn_outputs</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#models.neural_network.NeuralNetwork._compute"><code class="docutils literal notranslate"><span class="pre">NeuralNetwork._compute()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#models.neural_network.NeuralNetwork.compute"><code class="docutils literal notranslate"><span class="pre">NeuralNetwork.compute()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#models.neural_network.NeuralNetwork.gradient_descent"><code class="docutils literal notranslate"><span class="pre">NeuralNetwork.gradient_descent()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#models.neural_network.NeuralNetwork.mass_compute"><code class="docutils literal notranslate"><span class="pre">NeuralNetwork.mass_compute()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#models.neural_network.NeuralNode"><code class="docutils literal notranslate"><span class="pre">NeuralNode</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#models.neural_network.NeuralNode._weights"><code class="docutils literal notranslate"><span class="pre">NeuralNode._weights</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#models.neural_network.NeuralNode._bias"><code class="docutils literal notranslate"><span class="pre">NeuralNode._bias</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#models.neural_network.NeuralNode._compute"><code class="docutils literal notranslate"><span class="pre">NeuralNode._compute()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#models.neural_network.NeuralNode.bias"><code class="docutils literal notranslate"><span class="pre">NeuralNode.bias</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#models.neural_network.NeuralNode.compute"><code class="docutils literal notranslate"><span class="pre">NeuralNode.compute()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#models.neural_network.NeuralNode.weights"><code class="docutils literal notranslate"><span class="pre">NeuralNode.weights</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#models-helper">Models - Helper</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#models.helpers.InvalidDataError"><code class="docutils literal notranslate"><span class="pre">InvalidDataError</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#models.helpers.InvalidDataError.message"><code class="docutils literal notranslate"><span class="pre">InvalidDataError.message</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Autodiff Engine & Models</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">API Reference - Autodiff Models</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/models_reference.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="api-reference-autodiff-models">
+<h1>API Reference - Autodiff Models<a class="headerlink" href="#api-reference-autodiff-models" title="Link to this heading"></a></h1>
+<p>Find the documentation for the Autodiff Models here!</p>
+<section id="models-baseclasses">
+<h2>Models - Baseclasses<a class="headerlink" href="#models-baseclasses" title="Link to this heading"></a></h2>
+<p>Find the documentation for the Baseclasses here!</p>
+<dl class="py class" id="module-models.baseclass">
+<dt class="sig sig-object py" id="models.baseclass.RegressionModelABC">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">models.baseclass.</span></span><span class="sig-name descname"><span class="pre">RegressionModelABC</span></span><a class="headerlink" href="#models.baseclass.RegressionModelABC" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ABC</span></code></p>
+<p>Abstract base class for regression models.</p>
+<p>Subclasses should implement the <cite>fit_gradient_descent</cite> method.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="models.baseclass.RegressionModelABC._parameters">
+<span class="sig-name descname"><span class="pre">_parameters</span></span><a class="headerlink" href="#models.baseclass.RegressionModelABC._parameters" title="Link to this definition"></a></dt>
+<dd><p>A dictionary containing the parameters of the model.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="simple">
+<dt>Properties:</dt><dd><p>parameters (dict): A dictionary containing the parameters of the model.</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="models.baseclass.RegressionModelABC.fit_gradient_descent">
+<span class="sig-name descname"><span class="pre">fit_gradient_descent</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">method</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#models.baseclass.RegressionModelABC.fit_gradient_descent" title="Link to this definition"></a></dt>
+<dd><p>Fits the model using gradient descent.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="id0">
+<span class="sig-name descname"><span class="pre">fit_gradient_descent</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">learning_rate</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">loss_function</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">...</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="autodiff_reference.html#autodiff.variable.Variable" title="autodiff.variable.Variable"><span class="pre">Variable</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_iter</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parameters_initialization</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">ndarray</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="autodiff_reference.html#autodiff.helper.InvalidDataError.None" title="autodiff.helper.InvalidDataError.None"><span class="pre">None</span></a></span></span><a class="headerlink" href="#id0" title="Link to this definition"></a></dt>
+<dd><p>Fits the model using gradient descent.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<em>np.ndarray</em>) – The input data.</p></li>
+<li><p><strong>y</strong> (<em>np.ndarray</em>) – The target data.</p></li>
+<li><p><strong>learning_rate</strong> (<em>float</em>) – The learning rate.</p></li>
+<li><p><strong>loss_function</strong> (<em>Callable</em><em>[</em><em>...</em><em>, </em><a class="reference internal" href="autodiff_reference.html#autodiff.variable.Variable" title="autodiff.variable.Variable"><em>Variable</em></a><em>]</em>) – The loss function.</p></li>
+<li><p><strong>n_iter</strong> (<em>int</em>) – The number of iterations.</p></li>
+<li><p><strong>parameters_initialization</strong> (<em>Callable</em><em>[</em><em>[</em><em>int</em><em>]</em><em>, </em><em>np.ndarray</em><em>]</em>) – The function to initialize the parameters.</p></li>
+<li><p><strong>**kwargs</strong> – Additional keyword arguments.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="models.baseclass.RegressionModelABC.parameters">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">parameters</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="autodiff_reference.html#autodiff.variable.Variable" title="autodiff.variable.Variable"><span class="pre">Variable</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#models.baseclass.RegressionModelABC.parameters" title="Link to this definition"></a></dt>
+<dd><p>Returns a dictionary containing the parameters of the model.</p>
+<dl class="simple">
+<dt>The dictionary contains a single key ‘parameters’ mapped to</dt><dd><p>a Variable object containing the parameters of the model.</p>
+</dd>
+</dl>
+<p>The Variable object is a copy of the parameters stored in the model.</p>
+<dl class="simple">
+<dt>If the model has not been fitted, a warning is issued</dt><dd><p>and an empty dictionary is returned.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="models.baseclass.RegressionModelABC.predict">
+<em class="property"><span class="k"><span class="pre">abstractmethod</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">predict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="autodiff_reference.html#autodiff.variable.Variable" title="autodiff.variable.Variable"><span class="pre">Variable</span></a></span></span><a class="headerlink" href="#models.baseclass.RegressionModelABC.predict" title="Link to this definition"></a></dt>
+<dd><p>Abstract method for making predictions.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>x</strong> (<em>np.ndarray</em>) – The input data.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The predicted output.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="autodiff_reference.html#autodiff.variable.Variable" title="autodiff.variable.Variable">Variable</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="models-models">
+<h2>Models - Models<a class="headerlink" href="#models-models" title="Link to this heading"></a></h2>
+<p>Find the documentation for the Models here!</p>
+<dl class="py class" id="module-models.models">
+<dt class="sig sig-object py" id="models.models.LogisticRegression">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">models.models.</span></span><span class="sig-name descname"><span class="pre">LogisticRegression</span></span><a class="headerlink" href="#models.models.LogisticRegression" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#models.baseclass.RegressionModelABC" title="models.baseclass.RegressionModelABC"><code class="xref py py-class docutils literal notranslate"><span class="pre">RegressionModelABC</span></code></a></p>
+<p>Logistic Regression Model.</p>
+<p>This class implements a logistic regression model.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="models.models.LogisticRegression._parameters">
+<span class="sig-name descname"><span class="pre">_parameters</span></span><a class="headerlink" href="#models.models.LogisticRegression._parameters" title="Link to this definition"></a></dt>
+<dd><p>A dictionary containing the parameters of the model.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">fit_gradient_descent(x,</span> <span class="pre">y,</span> <span class="pre">learning_rate,</span> <span class="pre">loss_function,</span> <span class="pre">n_iter,</span></span></dt>
+<dd><p>parameters_initialization): Fits the model using gradient descent.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="models.models.LogisticRegression.predict">
+<span class="sig-name descname"><span class="pre">predict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#models.models.LogisticRegression.predict" title="Link to this definition"></a></dt>
+<dd><p>Predicts the output of the model given the input data.</p>
+</dd></dl>
+
+<dl class="field-list simple">
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>ValueError</strong> – If the input data is not valid.</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="id1">
+<span class="sig-name descname"><span class="pre">predict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="autodiff_reference.html#autodiff.variable.Variable" title="autodiff.variable.Variable"><span class="pre">Variable</span></a></span></span><a class="headerlink" href="#id1" title="Link to this definition"></a></dt>
+<dd><p>Predicts the output of the model given the input data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>x</strong> (<em>np.ndarray</em>) – The input data.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The predicted output variable.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="autodiff_reference.html#autodiff.variable.Variable" title="autodiff.variable.Variable">Variable</a></p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>ValueError</strong> – If the input data is not valid.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="models.models.MultipleLinearRegression">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">models.models.</span></span><span class="sig-name descname"><span class="pre">MultipleLinearRegression</span></span><a class="headerlink" href="#models.models.MultipleLinearRegression" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#models.baseclass.RegressionModelABC" title="models.baseclass.RegressionModelABC"><code class="xref py py-class docutils literal notranslate"><span class="pre">RegressionModelABC</span></code></a></p>
+<p>Multiple Linear Regression Model.</p>
+<p>This class implements a multiple linear regression model.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="models.models.MultipleLinearRegression._parameters">
+<span class="sig-name descname"><span class="pre">_parameters</span></span><a class="headerlink" href="#models.models.MultipleLinearRegression._parameters" title="Link to this definition"></a></dt>
+<dd><p>A dictionary containing the parameters of the model.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">fit_gradient_descent(x,</span> <span class="pre">y,</span> <span class="pre">learning_rate,</span> <span class="pre">loss_function,</span> <span class="pre">n_iter,</span></span></dt>
+<dd><p>parameters_initialization): Fits the model using gradient descent.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="models.models.MultipleLinearRegression.predict">
+<span class="sig-name descname"><span class="pre">predict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#models.models.MultipleLinearRegression.predict" title="Link to this definition"></a></dt>
+<dd><p>Predicts the output of the model given the input data.</p>
+</dd></dl>
+
+<dl class="field-list simple">
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>ValueError</strong> – If the input data is not valid.</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="id2">
+<span class="sig-name descname"><span class="pre">predict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="autodiff_reference.html#autodiff.variable.Variable" title="autodiff.variable.Variable"><span class="pre">Variable</span></a></span></span><a class="headerlink" href="#id2" title="Link to this definition"></a></dt>
+<dd><p>Predicts the output of the model given the input data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>x</strong> (<em>np.ndarray</em>) – The input data.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The predicted output variable.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="autodiff_reference.html#autodiff.variable.Variable" title="autodiff.variable.Variable">Variable</a></p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>ValueError</strong> – If the input data is not valid.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="models.models.OLSLinearRegression">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">models.models.</span></span><span class="sig-name descname"><span class="pre">OLSLinearRegression</span></span><a class="headerlink" href="#models.models.OLSLinearRegression" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#models.models.MultipleLinearRegression" title="models.models.MultipleLinearRegression"><code class="xref py py-class docutils literal notranslate"><span class="pre">MultipleLinearRegression</span></code></a></p>
+<p>Ordinary Least Squares Linear Regression Model.</p>
+<p>This class implements an ordinary least squares linear regression model.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="models.models.OLSLinearRegression._parameters">
+<span class="sig-name descname"><span class="pre">_parameters</span></span><a class="headerlink" href="#models.models.OLSLinearRegression._parameters" title="Link to this definition"></a></dt>
+<dd><p>A dictionary containing the parameters of the model.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">fit_gradient_descent(x,</span> <span class="pre">y,</span> <span class="pre">learning_rate,</span> <span class="pre">loss_function,</span> <span class="pre">n_iter,</span></span></dt>
+<dd><p>parameters_initialization): Fits the model using gradient descent.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="models.models.OLSLinearRegression.fit">
+<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#models.models.OLSLinearRegression.fit" title="Link to this definition"></a></dt>
+<dd><p>Fits the model using ordinary least squares linear regression.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="models.models.OLSLinearRegression.predict">
+<span class="sig-name descname"><span class="pre">predict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#models.models.OLSLinearRegression.predict" title="Link to this definition"></a></dt>
+<dd><p>Predicts the output of the model given the input data.</p>
+</dd></dl>
+
+<dl class="field-list simple">
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>ValueError</strong> – If the input data is not valid.</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="id3">
+<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="autodiff_reference.html#autodiff.helper.InvalidDataError.None" title="autodiff.helper.InvalidDataError.None"><span class="pre">None</span></a></span></span><a class="headerlink" href="#id3" title="Link to this definition"></a></dt>
+<dd><p>Fits the model using ordinary least squares linear regression.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<em>np.ndarray</em>) – The input data.</p></li>
+<li><p><strong>y</strong> (<em>np.ndarray</em>) – The target data.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>ValueError</strong> – If the input data is not valid.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="models-loss-functions">
+<h2>Models - Loss Functions<a class="headerlink" href="#models-loss-functions" title="Link to this heading"></a></h2>
+<p>Find the documentation for the Loss Functions here!</p>
+<dl class="py function" id="module-models.loss_functions">
+<dt class="sig sig-object py" id="models.loss_functions.lasso_loss">
+<span class="sig-prename descclassname"><span class="pre">models.loss_functions.</span></span><span class="sig-name descname"><span class="pre">lasso_loss</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">y_true</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="autodiff_reference.html#autodiff.variable.Variable" title="autodiff.variable.Variable"><span class="pre">Variable</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_pred</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="autodiff_reference.html#autodiff.variable.Variable" title="autodiff.variable.Variable"><span class="pre">Variable</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="autodiff_reference.html#autodiff.variable.Variable" title="autodiff.variable.Variable"><span class="pre">Variable</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">lamba</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">_</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="autodiff_reference.html#autodiff.variable.Variable" title="autodiff.variable.Variable"><span class="pre">Variable</span></a></span></span><a class="headerlink" href="#models.loss_functions.lasso_loss" title="Link to this definition"></a></dt>
+<dd><p>LASSO loss function.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>y_true</strong> (<a class="reference internal" href="autodiff_reference.html#autodiff.variable.Variable" title="autodiff.variable.Variable"><em>Variable</em></a>) – The true labels.</p></li>
+<li><p><strong>y_pred</strong> (<a class="reference internal" href="autodiff_reference.html#autodiff.variable.Variable" title="autodiff.variable.Variable"><em>Variable</em></a>) – The predicted labels.</p></li>
+<li><p><strong>params</strong> (<a class="reference internal" href="autodiff_reference.html#autodiff.variable.Variable" title="autodiff.variable.Variable"><em>Variable</em></a>) – The parameters.</p></li>
+<li><p><strong>lamba</strong> (<em>float</em>) – The regularization parameter.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The LASSO loss.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="autodiff_reference.html#autodiff.variable.Variable" title="autodiff.variable.Variable">Variable</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="models.loss_functions.log_loss">
+<span class="sig-prename descclassname"><span class="pre">models.loss_functions.</span></span><span class="sig-name descname"><span class="pre">log_loss</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">y_true</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="autodiff_reference.html#autodiff.variable.Variable" title="autodiff.variable.Variable"><span class="pre">Variable</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_pred</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="autodiff_reference.html#autodiff.variable.Variable" title="autodiff.variable.Variable"><span class="pre">Variable</span></a></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">_</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="autodiff_reference.html#autodiff.variable.Variable" title="autodiff.variable.Variable"><span class="pre">Variable</span></a></span></span><a class="headerlink" href="#models.loss_functions.log_loss" title="Link to this definition"></a></dt>
+<dd><p>Log loss function.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>y_true</strong> (<a class="reference internal" href="autodiff_reference.html#autodiff.variable.Variable" title="autodiff.variable.Variable"><em>Variable</em></a>) – The true labels.</p></li>
+<li><p><strong>y_pred</strong> (<a class="reference internal" href="autodiff_reference.html#autodiff.variable.Variable" title="autodiff.variable.Variable"><em>Variable</em></a>) – The predicted labels.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The log loss.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="autodiff_reference.html#autodiff.variable.Variable" title="autodiff.variable.Variable">Variable</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="models.loss_functions.mse_loss">
+<span class="sig-prename descclassname"><span class="pre">models.loss_functions.</span></span><span class="sig-name descname"><span class="pre">mse_loss</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">y_true</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="autodiff_reference.html#autodiff.variable.Variable" title="autodiff.variable.Variable"><span class="pre">Variable</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_pred</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="autodiff_reference.html#autodiff.variable.Variable" title="autodiff.variable.Variable"><span class="pre">Variable</span></a></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">_</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="autodiff_reference.html#autodiff.variable.Variable" title="autodiff.variable.Variable"><span class="pre">Variable</span></a></span></span><a class="headerlink" href="#models.loss_functions.mse_loss" title="Link to this definition"></a></dt>
+<dd><p>Mean squared error loss function.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>y_true</strong> (<a class="reference internal" href="autodiff_reference.html#autodiff.variable.Variable" title="autodiff.variable.Variable"><em>Variable</em></a>) – The true labels.</p></li>
+<li><p><strong>y_pred</strong> (<a class="reference internal" href="autodiff_reference.html#autodiff.variable.Variable" title="autodiff.variable.Variable"><em>Variable</em></a>) – The predicted labels.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The mean squared error loss.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="autodiff_reference.html#autodiff.variable.Variable" title="autodiff.variable.Variable">Variable</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="models.loss_functions.mse_loss_nn">
+<span class="sig-prename descclassname"><span class="pre">models.loss_functions.</span></span><span class="sig-name descname"><span class="pre">mse_loss_nn</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">y_true</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="autodiff_reference.html#autodiff.variable.Variable" title="autodiff.variable.Variable"><span class="pre">Variable</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_pred</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="autodiff_reference.html#autodiff.variable.Variable" title="autodiff.variable.Variable"><span class="pre">Variable</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">_</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="autodiff_reference.html#autodiff.variable.Variable" title="autodiff.variable.Variable"><span class="pre">Variable</span></a></span></span><a class="headerlink" href="#models.loss_functions.mse_loss_nn" title="Link to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>Computes the mean squared error between the predicted and true labels</dt><dd><p>for the neural network.</p>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>y_true</strong> (<em>list</em><em>[</em><a class="reference internal" href="autodiff_reference.html#autodiff.variable.Variable" title="autodiff.variable.Variable"><em>Variable</em></a><em>]</em>) – The true labels.</p></li>
+<li><p><strong>y_pred</strong> (<em>list</em><em>[</em><a class="reference internal" href="autodiff_reference.html#autodiff.variable.Variable" title="autodiff.variable.Variable"><em>Variable</em></a><em>]</em>) – The predicted labels.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The mean squared error between the predicted and true labels.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="autodiff_reference.html#autodiff.variable.Variable" title="autodiff.variable.Variable">Variable</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="models.loss_functions.ridge_loss">
+<span class="sig-prename descclassname"><span class="pre">models.loss_functions.</span></span><span class="sig-name descname"><span class="pre">ridge_loss</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">y_true</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="autodiff_reference.html#autodiff.variable.Variable" title="autodiff.variable.Variable"><span class="pre">Variable</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_pred</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="autodiff_reference.html#autodiff.variable.Variable" title="autodiff.variable.Variable"><span class="pre">Variable</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="autodiff_reference.html#autodiff.variable.Variable" title="autodiff.variable.Variable"><span class="pre">Variable</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">lamba</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">_</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="autodiff_reference.html#autodiff.variable.Variable" title="autodiff.variable.Variable"><span class="pre">Variable</span></a></span></span><a class="headerlink" href="#models.loss_functions.ridge_loss" title="Link to this definition"></a></dt>
+<dd><p>Ridge loss function.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>y_true</strong> (<a class="reference internal" href="autodiff_reference.html#autodiff.variable.Variable" title="autodiff.variable.Variable"><em>Variable</em></a>) – The true labels.</p></li>
+<li><p><strong>y_pred</strong> (<a class="reference internal" href="autodiff_reference.html#autodiff.variable.Variable" title="autodiff.variable.Variable"><em>Variable</em></a>) – The predicted labels.</p></li>
+<li><p><strong>params</strong> (<a class="reference internal" href="autodiff_reference.html#autodiff.variable.Variable" title="autodiff.variable.Variable"><em>Variable</em></a>) – The parameters.</p></li>
+<li><p><strong>lamba</strong> (<em>float</em>) – The regularization parameter.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The ridge loss.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="autodiff_reference.html#autodiff.variable.Variable" title="autodiff.variable.Variable">Variable</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="models-initialization-methods">
+<h2>Models - Initialization methods<a class="headerlink" href="#models-initialization-methods" title="Link to this heading"></a></h2>
+<p>Find the documentation for the Initialization methods here!</p>
+<dl class="py function" id="module-models.initializations">
+<dt class="sig sig-object py" id="models.initializations.standard_gaussian_initialization">
+<span class="sig-prename descclassname"><span class="pre">models.initializations.</span></span><span class="sig-name descname"><span class="pre">standard_gaussian_initialization</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ndarray</span></span></span><a class="headerlink" href="#models.initializations.standard_gaussian_initialization" title="Link to this definition"></a></dt>
+<dd><p>Initializes the parameters of a model with standard Gaussian distribution.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>n</strong> (<em>int</em>) – The number of parameters to initialize.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The initialized parameters.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>np.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="models-neural-network">
+<h2>Models - Neural Network<a class="headerlink" href="#models-neural-network" title="Link to this heading"></a></h2>
+<p>Find the documentation for the Neural Network here!</p>
+<dl class="py class" id="module-models.neural_network">
+<dt class="sig sig-object py" id="models.neural_network.NeuralNetwork">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">models.neural_network.</span></span><span class="sig-name descname"><span class="pre">NeuralNetwork</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_shape</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_shape</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">immediate_layers</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">initiation_weights_procedure</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">np.ndarray</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">initiation_bias_procedure</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">np.ndarray</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#models.neural_network.NeuralNetwork" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>A NeuralNetwork is a neural network consisting of multiple layers of nodes.
+Each node applies an activation function to its inputs.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="models.neural_network.NeuralNetwork._input_shape">
+<span class="sig-name descname"><span class="pre">_input_shape</span></span><a class="headerlink" href="#models.neural_network.NeuralNetwork._input_shape" title="Link to this definition"></a></dt>
+<dd><p>The shape of the input layer.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="models.neural_network.NeuralNetwork._output_shape">
+<span class="sig-name descname"><span class="pre">_output_shape</span></span><a class="headerlink" href="#models.neural_network.NeuralNetwork._output_shape" title="Link to this definition"></a></dt>
+<dd><p>The shape of the output layer.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="models.neural_network.NeuralNetwork._immediate_layers">
+<span class="sig-name descname"><span class="pre">_immediate_layers</span></span><a class="headerlink" href="#models.neural_network.NeuralNetwork._immediate_layers" title="Link to this definition"></a></dt>
+<dd><p>The shapes of the intermediate layers.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list[int]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="models.neural_network.NeuralNetwork._nn_nodes">
+<span class="sig-name descname"><span class="pre">_nn_nodes</span></span><a class="headerlink" href="#models.neural_network.NeuralNetwork._nn_nodes" title="Link to this definition"></a></dt>
+<dd><p>A list of lists of nodes,
+where each list represents a layer.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list[list[<a class="reference internal" href="#models.neural_network.NeuralNode" title="models.neural_network.NeuralNode">NeuralNode</a>]]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="models.neural_network.NeuralNetwork._nn_outputs">
+<span class="sig-name descname"><span class="pre">_nn_outputs</span></span><a class="headerlink" href="#models.neural_network.NeuralNetwork._nn_outputs" title="Link to this definition"></a></dt>
+<dd><p>A list of lists of outputs,
+where each list represents a layer.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list[list[<a class="reference internal" href="autodiff_reference.html#autodiff.variable.Variable" title="autodiff.variable.Variable">Variable</a>]]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="models.neural_network.NeuralNetwork._compute">
+<span class="sig-name descname"><span class="pre">_compute</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">list[Variable]</span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="autodiff_reference.html#autodiff.variable.Variable" title="autodiff.variable.Variable"><span class="pre">Variable</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#models.neural_network.NeuralNetwork._compute" title="Link to this definition"></a></dt>
+<dd><p>computes the output of the network.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="models.neural_network.NeuralNetwork.compute">
+<span class="sig-name descname"><span class="pre">compute</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inputs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ndarray</span></span></span><a class="headerlink" href="#models.neural_network.NeuralNetwork.compute" title="Link to this definition"></a></dt>
+<dd><p>Computes the output of the network.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>inputs</strong> (<em>np.ndarray</em>) – The input to the network.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The output of the network.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>np.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="models.neural_network.NeuralNetwork.gradient_descent">
+<span class="sig-name descname"><span class="pre">gradient_descent</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">np.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">np.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_iter</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">learning_rate</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">loss_function</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Callable</span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">...</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="autodiff_reference.html#autodiff.variable.Variable" title="autodiff.variable.Variable"><span class="pre">Variable</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="autodiff_reference.html#autodiff.helper.InvalidDataError.None" title="autodiff.helper.InvalidDataError.None"><span class="pre">None</span></a></span></span><a class="headerlink" href="#models.neural_network.NeuralNetwork.gradient_descent" title="Link to this definition"></a></dt>
+<dd><p>Fits the model using gradient descent.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<em>np.ndarray</em>) – The input data.</p></li>
+<li><p><strong>y</strong> (<em>np.ndarray</em>) – The target data.</p></li>
+<li><p><strong>n_iter</strong> (<em>int</em>) – The number of iterations.</p></li>
+<li><p><strong>learning_rate</strong> (<em>float</em>) – The learning rate.</p></li>
+<li><p><strong>loss_function</strong> (<em>Callable</em><em>[</em><em>...</em><em>, </em><a class="reference internal" href="autodiff_reference.html#autodiff.variable.Variable" title="autodiff.variable.Variable"><em>Variable</em></a><em>]</em>) – The loss function.</p></li>
+<li><p><strong>verbose</strong> (<em>bool</em><em>, </em><em>optional</em>) – Whether to print the loss. Defaults to True.</p></li>
+<li><p><strong>**kwargs</strong> – Additional keyword arguments to pass to the loss function.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="models.neural_network.NeuralNetwork.mass_compute">
+<span class="sig-name descname"><span class="pre">mass_compute</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inputs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ndarray</span></span></span><a class="headerlink" href="#models.neural_network.NeuralNetwork.mass_compute" title="Link to this definition"></a></dt>
+<dd><p>Computes the output of the network.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>inputs</strong> (<em>np.ndarray</em>) – The input to the network.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The output of the network.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>np.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="models.neural_network.NeuralNode">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">models.neural_network.</span></span><span class="sig-name descname"><span class="pre">NeuralNode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">initiation_weights</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">initiation_bias</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#models.neural_network.NeuralNode" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>A NeuralNode is a node in a NeuralNetwork. It takes a list of inputs and applies
+an activation function to them. The activation function is a sigmoid function.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="models.neural_network.NeuralNode._weights">
+<span class="sig-name descname"><span class="pre">_weights</span></span><a class="headerlink" href="#models.neural_network.NeuralNode._weights" title="Link to this definition"></a></dt>
+<dd><p>A list of weights for each input.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list[<a class="reference internal" href="autodiff_reference.html#autodiff.variable.Variable" title="autodiff.variable.Variable">Variable</a>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="models.neural_network.NeuralNode._bias">
+<span class="sig-name descname"><span class="pre">_bias</span></span><a class="headerlink" href="#models.neural_network.NeuralNode._bias" title="Link to this definition"></a></dt>
+<dd><p>The bias of the node.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="autodiff_reference.html#autodiff.variable.Variable" title="autodiff.variable.Variable">Variable</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="models.neural_network.NeuralNode._compute">
+<span class="sig-name descname"><span class="pre">_compute</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">list[Variable]</span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="autodiff_reference.html#autodiff.variable.Variable" title="autodiff.variable.Variable"><span class="pre">Variable</span></a></span></span><a class="headerlink" href="#models.neural_network.NeuralNode._compute" title="Link to this definition"></a></dt>
+<dd><p>Computes the output of the node.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="models.neural_network.NeuralNode.bias">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">bias</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="autodiff_reference.html#autodiff.variable.Variable" title="autodiff.variable.Variable"><span class="pre">Variable</span></a></em><a class="headerlink" href="#models.neural_network.NeuralNode.bias" title="Link to this definition"></a></dt>
+<dd><p>Returns the bias of the node.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The bias of the node.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="autodiff_reference.html#autodiff.variable.Variable" title="autodiff.variable.Variable">Variable</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="models.neural_network.NeuralNode.compute">
+<span class="sig-name descname"><span class="pre">compute</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inputs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="autodiff_reference.html#autodiff.variable.Variable" title="autodiff.variable.Variable"><span class="pre">Variable</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="autodiff_reference.html#autodiff.variable.Variable" title="autodiff.variable.Variable"><span class="pre">Variable</span></a></span></span><a class="headerlink" href="#models.neural_network.NeuralNode.compute" title="Link to this definition"></a></dt>
+<dd><p>Computes the output of the node.</p>
+<dl class="simple">
+<dt>The output is computed by taking the weighted sum of the inputs</dt><dd><p>and adding the bias.</p>
+</dd>
+</dl>
+<p>The result is then passed through the sigmoid activation function.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>inputs</strong> (<em>list</em><em>[</em><a class="reference internal" href="autodiff_reference.html#autodiff.variable.Variable" title="autodiff.variable.Variable"><em>Variable</em></a><em>]</em>) – A list of inputs to the node.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The output of the node.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="autodiff_reference.html#autodiff.variable.Variable" title="autodiff.variable.Variable">Variable</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="models.neural_network.NeuralNode.weights">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">weights</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="autodiff_reference.html#autodiff.variable.Variable" title="autodiff.variable.Variable"><span class="pre">Variable</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#models.neural_network.NeuralNode.weights" title="Link to this definition"></a></dt>
+<dd><p>Returns the weights of the node.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The weights of the node.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>list[<a class="reference internal" href="autodiff_reference.html#autodiff.variable.Variable" title="autodiff.variable.Variable">Variable</a>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="models-helper">
+<h2>Models - Helper<a class="headerlink" href="#models-helper" title="Link to this heading"></a></h2>
+<p>Find the documentation for the Helper here!</p>
+<dl class="py exception" id="module-models.helpers">
+<dt class="sig sig-object py" id="models.helpers.InvalidDataError">
+<em class="property"><span class="k"><span class="pre">exception</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">models.helpers.</span></span><span class="sig-name descname"><span class="pre">InvalidDataError</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#models.helpers.InvalidDataError" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></p>
+<p>Raised when the input data is invalid.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="models.helpers.InvalidDataError.message">
+<span class="sig-name descname"><span class="pre">message</span></span><a class="headerlink" href="#models.helpers.InvalidDataError.message" title="Link to this definition"></a></dt>
+<dd><p>The message of the exception</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="autodiff_reference.html" class="btn btn-neutral float-left" title="API Reference - Autodiff Engine" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Group 33.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
